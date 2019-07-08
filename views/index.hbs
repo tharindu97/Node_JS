@@ -62,13 +62,15 @@
                     </thead>
 
                     <tbody>
+                        {{#each users}}
                         <tr>
-                            <td>Tharindu</td>
-                            <td>Kavishna</td>
-                            <td>tharindukavishna@gmail.com</td>
-                            <td>programmer</td>
+                            <td>{{ this.fname }}</td>
+                            <td>{{ this.lname }}</td>
+                            <td>{{ email }}</td>
+                            <td>{{ prof }}</td>
                             <td><button class="btn btn-primary">Edit</button> <button class="btn btn-primary">Delete</button></td>
                         </tr>
+                        {{/each}}
                     </tbody>
                 </table>
             </div>
