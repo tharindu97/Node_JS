@@ -11,4 +11,28 @@ router.get('/', function(req, res, next) {
  
 });
 
+router.post('/userAdd', function(req,res){
+  const userdata = {
+    fname:req.body.fname,
+    lname:req.body.lname,
+    email:req.body.email,
+    prof:req.body.prof
+  };
+
+  connection.query("INSERT INTO users SET ?", userdata, function(err,result){
+    if(err) throw err;
+    res.redirect('/');
+  });
+});
+
+router.get('/deleteUser/:id', function(req,res){
+  
+  var userid = req.params.id;
+  connection.query("DELETE FROM users WHERE id = ?", [userid], function(err,result){
+    if(err) throw err;
+    res.redirect('/');
+  }); 
+});
+
+
 module.exports = router;
