@@ -68,7 +68,10 @@
                             <td>{{ this.lname }}</td>
                             <td>{{ email }}</td>
                             <td>{{ prof }}</td>
-                            <td><button class="btn btn-primary">Edit</button> <a href="/deleteUser/{{ this.id }}"><button class="btn btn-primary">Delete</button></a></td>
+                            <td>
+                                <a href="/edit/{{ this.id }}"><button class="btn btn-primary">Edit</button></a> 
+                                <a href="/deleteUser/{{ this.id }}"><button class="btn btn-primary">Delete</button></a>
+                            </td>
                         </tr>
                         {{/each}}
                     </tbody>

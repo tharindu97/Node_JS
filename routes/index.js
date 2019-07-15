@@ -34,5 +34,27 @@ router.get('/deleteUser/:id', function(req,res){
   }); 
 });
 
+router.get('/edit/:id', function(req,res){
+  var userid = req.params.id;
+  connection.query("SELECT * FROM users WHERE id = ?", [userid], function(err,rows){
+    if(err) throw err;
+    res.render('edit',{userdata:rows}); 
+  });
+  
+});
+
+router.post('/update/:id', function(req,res){
+  var fname = req.body.fname;
+  var lname = req.body.lname;
+  var email = req.body.email;
+  var prof = req.body.prof;
+
+  var updateId = req.params.id;
+
+  connection.query("UPDATE users SET fname=?, lname=?, email=?, prof=? WHERE id=?", [fname,lname,email,prof,updateId] ,function(err,respond){
+    if(err) throw err;
+    res.render('../../'); 
+  });
+});
 
 module.exports = router;
